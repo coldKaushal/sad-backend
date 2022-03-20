@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
+    "dimas-kmeans": "^1.0.3",
     "express": "^4.17.3",
-    "mongoose": "^6.2.2"
-  }
+    "mongoose": "^6.2.2",
+    "skmeans": "^0.11.3"
+  },
+  "type": "module"
 }
