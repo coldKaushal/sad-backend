@@ -260,13 +260,7 @@ let port = process.env.PORT;
 if (port == null || port == "") {
   port = 4000;
 }
-app.listen(port, function(err){
-    if(err){
-        console.log(err);
-    }else{
-        console.log("server started at port 4000");
-    }
-});
+app.listen(port);
 
 
 
