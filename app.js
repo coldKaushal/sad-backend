@@ -256,8 +256,11 @@ app.post("/shistory", function(req, res){
 
 });
 })
-
-app.listen(4000, function(err){
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
+app.listen(port, function(err){
     if(err){
         console.log(err);
     }else{
