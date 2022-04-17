@@ -98,19 +98,24 @@ function getScore(data){
     var n = data.length;
     for (var i=1;i<n-1;i++){
       var thisProb = 0;
+      var count=0;
       for(var j=0;j<n;j++){
         if(j+i<n && data[j+i]!=0){
           thisProb += data[j]/data[j+i];
-          // console.log(data[j]);
+        }
+        else if(j+i<n){
+            count++;
         }
       }
       
       thisProb = thisProb*10;
-      thisProb = thisProb/29;
-      // console.log(thisProb);
+      if(count!=0){
+          thisProb = thisProb/count;
+      }
       prob.push(thisProb);
     }
     var score=0;
+    var count=0;
     var N = prob.length;
     for(var i=0;i<N;i++)
     {
@@ -118,6 +123,7 @@ function getScore(data){
         score+=prob[i];
       }else{
         score+=prob[i]*data[i]*0.01*(N-i);
+        count+=0.01*(N-i);
       }
     }
     score = score/N;
