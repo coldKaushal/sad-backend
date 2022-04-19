@@ -228,7 +228,7 @@ app.post("/centers", function(req, res){
 })
 
 app.post("/shistory", function(req, res){
-    
+    console.log(req.query);
     const latitude=req.query.latitude;
     const longitude = req.query.longitude;
     const date = new Date().getTime();
@@ -240,13 +240,17 @@ app.post("/shistory", function(req, res){
         date: {$gt: Number(date)-2592000000}
     }).sort({date:1}).exec(function(err, founds){
         if(err){
+            console.log("error");
             res.sendStatus(502);
             res.send('error');
         }else{
             if(founds){
                 data = founds;
+                
                 data.reverse();
+                console.log(data);
                 res.send(data);
+                
             }else{
                 res.status(404);
                 res.send('error');
@@ -256,11 +260,14 @@ app.post("/shistory", function(req, res){
 
 });
 })
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 4000;
-}
-app.listen(port);
+// let port = process.env.PORT;
+let port = 4000;
+
+app.listen(port, function(err){
+    if(!err){
+        console.log("server started at 4000");
+    }
+});
 
 
 
